@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="dashboard-container">
+    <h1>Dashboard</h1>
+
+    <div class="cards">
+        <div class="card">
+            <h2>Total Users</h2>
+            <p>{{ total_users }}</p>
+        </div>
+
+        <div class="card">
+            <h2>Active Sessions</h2>
+            <p>{{ active_sessions }}</p>
+        </div>
+
+        <div class="card">
+            <h2>Revenue</h2>
+            <p>${{ revenue }}</p>
+        </div>
+    </div>
+
+    <div class="chart-container">
+        <h2>Analytics Overview</h2>
+        <img src="{{ url_for('static', filename='images/chart.png') }}" alt="Chart" />
+    </div>
+</div>
+{% endblock %}

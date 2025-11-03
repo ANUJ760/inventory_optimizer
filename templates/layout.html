@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title if title else 'Smart Inventory Dashboard' }}</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #111;
+            color: #eee;
+            margin: 0;
+        }
+        header {
+            background: #1a1a1a;
+            padding: 18px 28px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #333;
+        }
+        a {
+            color: #eee;
+            text-decoration: none;
+            margin-right: 16px;
+        }
+        a:hover {
+            color: #4ade80;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 32px auto;
+            padding: 0 24px;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <h2>Smart Inventory Dashboard</h2>
+    <nav>
+        <a href="/">Home</a>
+        <a href="/dashboard">Dashboard</a>
+    </nav>
+</header>
+<div class="container">
+    {% block content %}{% endblock %}
+</div>
+</body>
+</html>
