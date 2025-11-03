@@ -23,12 +23,20 @@
 
     <div class="chart-container">
         <h2>Inventory Level Trend</h2>
-        <img src="{{ url_for('static', filename='charts/inventory_trend.png') }}" alt="Inventory Trend Chart">
+        {% if inventory_chart %}
+            <img src="{{ url_for('static', filename='charts/' ~ inventory_chart) }}" alt="Inventory Trend Chart">
+        {% else %}
+            <p>No inventory trend chart available.</p>
+        {% endif %}
     </div>
 
     <div class="chart-container">
         <h2>Predicted Demand Curve</h2>
-        <img src="{{ url_for('static', filename='charts/demand_forecast.png') }}" alt="Demand Forecast Chart">
+        {% if forecast_chart %}
+            <img src="{{ url_for('static', filename='charts/' ~ forecast_chart) }}" alt="Demand Forecast Chart">
+        {% else %}
+            <p>No forecast chart available.</p>
+        {% endif %}
     </div>
 </div>
 
