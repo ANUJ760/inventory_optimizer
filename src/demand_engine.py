@@ -60,3 +60,28 @@ class DemandEngine:
         safety_stock = self.calculate_safety_stock(demand_std, z_value)
         result = self.calculate_reorder_point(sma_demand, safety_stock, lead_time_days)
         return result
+
+
+def compute_metrics(df: pd.DataFrame, lead_time_days: int = 5, z_value: float = 1.65) -> pd.DataFrame:
+    """
+    Compatibility wrapper to compute metrics from a DataFrame that may use different column names.
+
+    Accepts DataFrames with either:
+    - 'Product', 'Sold_Units', 'Current_Stock'
+    or
+    - 'Item', 'QuantitySold', 'Current_Stock'
+
+    Returns a DataFrame with columns: Item, ForecastDemand, SafetyStock, ReorderPoint
+    """
+    df_copy = df.copy()
+
+    # Normalize column names
+    if 'Product' in df_copy.columns and 'Sold_Units' in df_copy.columns:
+        df_copy = df_copy.rename(columns={'Product': 'Item', 'Sold_Units': 'QuantitySold'})
+
+    if 'Item' not in df_copy.columns or 'QuantitySold' not in df_copy.columns:
+        raise ValueError("DataFrame must contain Item/Product and QuantitySold/Sold_Units columns")
+
+    engine = DemandEngine(df_copy, window=7)
+    result = engine.run(lead_time_days=lead_time_days, z_value=z_value)
+    return result

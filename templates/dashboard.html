@@ -1,29 +1,35 @@
 {% extends "layout.html" %}
-
 {% block content %}
+
 <div class="dashboard-container">
-    <h1>Dashboard</h1>
+    <h1>Inventory Dashboard</h1>
 
     <div class="cards">
         <div class="card">
-            <h2>Total Users</h2>
-            <p>{{ total_users }}</p>
+            <h2>Total Stock</h2>
+            <p>{{ total_stock }}</p>
         </div>
 
         <div class="card">
-            <h2>Active Sessions</h2>
-            <p>{{ active_sessions }}</p>
+            <h2>Low Stock Items</h2>
+            <p>{{ low_stock_count }}</p>
         </div>
 
         <div class="card">
-            <h2>Revenue</h2>
-            <p>${{ revenue }}</p>
+            <h2>Predicted Demand (Next 7 Days)</h2>
+            <p>{{ predicted_total }}</p>
         </div>
     </div>
 
     <div class="chart-container">
-        <h2>Analytics Overview</h2>
-        <img src="{{ url_for('static', filename='images/chart.png') }}" alt="Chart" />
+        <h2>Inventory Level Trend</h2>
+        <img src="{{ url_for('static', filename='charts/inventory_trend.png') }}" alt="Inventory Trend Chart">
+    </div>
+
+    <div class="chart-container">
+        <h2>Predicted Demand Curve</h2>
+        <img src="{{ url_for('static', filename='charts/demand_forecast.png') }}" alt="Demand Forecast Chart">
     </div>
 </div>
+
 {% endblock %}

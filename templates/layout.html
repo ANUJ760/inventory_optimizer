@@ -4,8 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ title if title else 'Smart Inventory Dashboard' }}</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap">
+
     <style>
         body {
             font-family: 'Inter', sans-serif;
@@ -35,6 +34,8 @@
             padding: 0 24px;
         }
     </style>
+    <!-- load dashboard stylesheet after the inline layout styles so it can override them when needed -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
 </head>
 <body>
 <header>

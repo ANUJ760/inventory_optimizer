@@ -2,6 +2,16 @@
 {% block content %}
 <div style="max-width:1200px; margin:auto;">
 
+    <!-- Upload CSV -->
+    <div style="margin-bottom:24px;">
+        <form method="post" action="/" enctype="multipart/form-data" style="display:flex; gap:12px; align-items:center;">
+            <label for="file" style="font-weight:600;">Upload sales CSV:</label>
+            <input type="file" name="file" id="file" accept=".csv" />
+            <button type="submit" style="padding:8px 12px; border-radius:6px; background:#4ade80; border:none; color:#111; cursor:pointer;">Upload</button>
+            <div style="margin-left:auto; color:#bbb;">Using dataset: <strong style="color:#fff;">{{ current_dataset }}</strong></div>
+        </form>
+    </div>
+
     <!-- Summary Cards -->
     <div style="display:flex; gap:20px; margin-bottom:30px; flex-wrap:wrap;">
         <div style="flex:1; min-width:220px; background:#1e1e1e; padding:15px; border-radius:10px; text-align:center;">
